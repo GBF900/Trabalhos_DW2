@@ -1,0 +1,25 @@
+<section *ngIf="!produtoSelecionado">
+
+  <h2>Lista de Produtos</h2>
+
+  <table class="table mx-auto">
+    @for (p of produtos; track p.id) {  
+    <tr >
+      <td>{{ p.id }}</td>
+
+      <td>
+        <a [routerLink]="[p.id]">
+          {{ p.nome }}
+        </a>
+      </td>
+
+      <td class="preco">
+      <strong> R$ {{p.preco}}</strong> (Por KG/L)
+      </td>
+
+    <td></td>  
+    </tr>
+  }
+  </table>
+
+</section>

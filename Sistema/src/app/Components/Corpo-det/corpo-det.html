@@ -1,0 +1,19 @@
+<section>
+
+  <h1>Achamos seus estoque de :</h1>
+
+@if (produto) {
+  <table>
+    <tr>
+      <td>{{ produto.id }}</td>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.detail }}</td>
+    </tr>
+  </table>
+}
+
+@else{
+  <h1>Não foi encontrado o produto específicado</h1>
+
+}
+</section>
