@@ -3,7 +3,7 @@
 }
 
 section {
-    max-width: 70%;
+    width: 70%;
     height:fit-content;
    
     margin-left:15%;
@@ -22,7 +22,7 @@ section {
 h1{
     margin-top: 20px;
     text-align: center;
-    font-size:clamp(15px, 4.5vw, 45px);
+    font-size:clamp(27px, 4.5vw, 45px);
 
     border-bottom:2px solid black;
     border-radius: 10px;
@@ -35,14 +35,10 @@ input,.campo-senha input,.campo-senha-denovo input  {
     border: 3px solid black;
     border-radius: 20px;
     text-align: center;
-    min-width:45%;
-    max-width: 60%;
+    min-width:65%;
+    max-width: 100%;
 }
 
-.campo-senha input,.campo-senha-denovo input {
-    min-width: 58%;
-    max-width: 115%;
-}
 
 span,small{
     color:red;
@@ -53,12 +49,12 @@ span,small{
 }
 
 form{
+    width:75%;
+    
     margin-top: 40px;
     height:fit-content;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-
     row-gap: 15px;
 
     align-content: center;
@@ -72,18 +68,21 @@ input[type="checkbox"]{
 
 .checkbox {
   display: flex;
-  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-  width: 78%;
-  line-height: 1.4;
-  text-align: start;
+
+  width:60%;
+  line-height: 1.5;
   font-size: 12px;
   padding:5%;
+
+  text-align: start;
+  align-self: center;
 }
 
 .checkbox input[type="checkbox"] {
-  margin-right: -20%; /* Ajusta o espaço entre a checkbox e o texto */
-  margin-left: -10%;
+   margin-left:-40%;  
 }
 
 
@@ -175,9 +174,15 @@ button[type="submit"]{
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+
+  font-size: clamp(10px,2.5vw, 18px);
   width:55%;
 }
 
+.modal-box h2{
+    font-size: clamp(30px,2.5vw, 25px);
+    
+}
 .modal-box button {
   margin-top: 10px;
   padding: 8px 15px;

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { form } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-ficha',
@@ -10,13 +9,14 @@ import { form } from '@angular/forms/signals';
   styleUrl: './ficha.css',
 })
 export class Ficha {
+  constructor(private cdr: ChangeDetectorRef) {}
 
  isActive = false; 
 
   usuario = {
     nome: '',
     email: '',
-    idade: null,
+    idade: 18,
     senha:'',
     password2:'',
     genero: '',
@@ -24,8 +24,25 @@ export class Ficha {
     termos: false
   };
 
-mensagemSucesso:string="";
 mostrarModal = false;
+
+fecharModal(form: NgForm) {
+  this.mostrarModal = false;
+   
+  setTimeout(() => {
+    form.resetForm({
+      nome: '',
+      email: '',
+      idade: 18,
+      senha: '',
+      password2: '',
+      genero: '',
+      cidade: '',
+      termos: false
+    });
+  });
+   }
+
 
 onSubmit(form: NgForm) {
     if (this.usuario.senha !== this.usuario.password2) {
@@ -33,26 +50,11 @@ onSubmit(form: NgForm) {
     }
 
     if (form.valid) {
-    this.mostrarModal = true; // 🔥 abre o modal
+    this.mostrarModal = true; 
     }
   }
 
-  fecharModal(form:NgForm) {
-  this.mostrarModal = false;
-  this.usuario = {
-    nome: '',
-    email: '',
-    idade: null,
-    senha: '',
-    password2: '',
-    genero: '',
-    cidade: '',
-    termos: false
-  };
-
-  form.resetForm(this.usuario);
-  }
-
+  
   // Função que decide a classe do botão
 getButtonClass(form: NgForm) {
   return (form.valid && this.usuario.senha === this.usuario.password2)

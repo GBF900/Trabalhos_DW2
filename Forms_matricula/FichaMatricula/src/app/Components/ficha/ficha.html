@@ -123,16 +123,15 @@ placeholder="Insira sua senha novamente">
   }
 
 <button type="submit"
-  [ngClass]="getButtonClass(form)">
+  [ngClass]="getButtonClass(form)" >
 Cadastrar
 </button>
 </form>
 
 
-@if (mostrarModal) {
-  <div class="modal-backdrop">
-
-    <div class="modal-box"  (click)="$event.stopPropagation()">
+@if(mostrarModal){
+  <div class="modal-backdrop" (click)="fecharModal(form)">
+    <div class="modal-box" (click)="$event.stopPropagation()">
       <h2>✅ Cadastro realizado!</h2>
       <p>Seus dados foram enviados com sucesso.</p>
 
@@ -141,6 +140,5 @@ Cadastrar
 
   </div>
 }
-
 
 </section>
