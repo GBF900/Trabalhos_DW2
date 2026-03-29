@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ListaProdutos,Produto } from '../../ListaProdutos';
+import { ActivatedRoute} from '@angular/router';
+import { ListaProdutos } from '../../ListaProdutos';
 
 @Component({
   selector: 'app-corpo-det',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './corpo-det.html',
   styleUrl: './corpo-det.css',
 })
+
+
 export class CorpoDet {
    produto:any;
 

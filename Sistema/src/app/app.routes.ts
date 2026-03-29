@@ -22,7 +22,9 @@ export const routes: Routes = [
     children: [
       { path: '0', component: CorpoDet0 },
       { path: ':id', component: CorpoDet },
+    
     ]
-  }
+  },
+  {path:'**',redirectTo:'404 ERROR',pathMatch:'full'}
 
 ];
