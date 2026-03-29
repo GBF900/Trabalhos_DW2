@@ -1,0 +1,24 @@
+*{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+nav{
+   max-width: 100%;
+   height: 100px;
+   background-color: black;
+   border-bottom: 10px solid rgb(243, 249, 91);
+ 
+}
+
+a{
+   color:white;
+   font-size: clamp(50px, 1.5vw, 80px);
+   pointer-events: none;
+}
+
+.container-fluid{
+   padding:1% 4% 1.6% ;
+}
+
+

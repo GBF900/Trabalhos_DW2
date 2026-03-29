@@ -1,0 +1,146 @@
+<section>
+
+    <h1> FICHA DE MATRÍCULA </h1>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+<label for="nome">Nome completo <span>*</span> </label>    
+<input type="text" required minlength="3" pattern="[A-Za-zÀ-ÿá-ÿ\u00C0-\u00FF\s-]+$" 
+[(ngModel)]="usuario.nome" name="nome" #nome="ngModel"
+placeholder="Insira seu nome completo">
+
+ @if (nome.invalid && (nome.dirty || nome.touched)) {
+    <small >Nome obrigatório</small>
+    @if (nome.errors?.['minlength']) {
+      <small>Mínimo de 3 caracteres</small>
+    }
+  }
+
+
+<label for="idade"> Idade <span>*</span> </label>    
+<input type="number" name="idade" [(ngModel)]="usuario.idade"
+required min="18" #idade="ngModel" placeholder="Insira sua idade">
+
+  @if (idade.invalid && (idade.dirty || idade.touched)) {
+      <small>Idade obrigatória</small>
+    @if (idade.errors?.['min']) {
+      <small>A idade mínima é 18 anos</small>
+    }
+  }
+
+<label for="email">E-mail  <span>*</span> </label>    
+<input  type="text" required pattern="^[A-Za-z0-9._%+-]+@[A-Za-z.]+\.[A-Za-z]{2,}$" 
+[(ngModel)]="usuario.email" name="email" #email="ngModel"
+placeholder="Insira seu melhor E-mail">
+
+@if (email.invalid && (email.dirty || email.touched)) {
+  <small>O e-mail é obrigatório</small>
+  
+  @if (email.errors?.['email']) {
+  <small>E-mail inválido</small>
+  } 
+  @else if (email.errors?.['pattern']) {
+    <small>Formato fora do padrão exigido</small>
+
+  }
+}
+
+<label for="password">Senha  <span>*</span> </label>    
+<div class="campo-senha">
+<input  [type] ="mostrarSenha ? 'text' : 'password'" required minlength="6"
+pattern="^[A-Za-z0-9]+$" [(ngModel)]="usuario.senha" 
+name="password" #password="ngModel"
+placeholder="Insira sua senha"> 
+
+<button class="bi" [ngClass]="mostrarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'" (click)="toggleSenha()">
+  </button>
+</div>
+ @if (password.invalid && (password.dirty || password.touched)) {
+  <small>Mínimo de 6 caracteres</small>
+   @if (password.errors?.['pattern']) {
+   <small>   Senha não atende ao padrão exigido</small>
+   <small>Não aceitamos caracteres escpeciais. Apenas letras , maiúsculas e minúsculas, e números</small>
+  } 
+  }
+
+
+<div class="campo-senha-denovo">
+<label for="password"> Confirmar senha  <span>*</span> </label>    
+<input  [type]="mostrarConfirmarSenha ? 'text' : 'password'" required minlength="6" 
+pattern="^[A-Za-z0-9]+$" [(ngModel)]="usuario.password2" 
+name="usuario.password2" #password2="ngModel"
+placeholder="Insira sua senha novamente"> 
+ 
+<button class="bi" [ngClass]="mostrarConfirmarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'" (click)="toggleConfirmarSenha()">
+  </button>
+</div>
+@if ((password2.dirty || password2.touched) && usuario.password2===''&& usuario.senha===''){ 
+  <small>Insira uma senha no campo "Senha" e repita-a no campo "Confirmar senha"</small>  
+  @if ( usuario.password2 !== usuario.senha ) {
+    <small>As senhas não coincidem</small> 
+  }
+  }
+@else if (usuario.password2 === usuario.senha && usuario.password2.length>0 && usuario.senha.length>0){
+  <small class="sucesso">Senhas combinam</small>
+}
+
+<label>Gênero <span>*</span> </label>
+  <select name="genero" [(ngModel)]="usuario.genero" required #genero="ngModel">
+    <option value="">Selecione</option>
+    <option value="M">Masculino</option>
+    <option value="F">Feminino</option>
+    <option value="O">Outro</option>
+  </select>
+
+  @if(genero.invalid && (genero.dirty || genero.touched) ){
+    <small>Selecione um gênero</small>
+  }
+
+  <label>Cidade <span>*</span> </label>
+  <select name="cidade" [(ngModel)]="usuario.cidade" required #cidade="ngModel">
+    <option value="">Selecione</option>
+    <option>Colatina</option>
+    <option>Marilândia</option>
+    <option>Linhares</option>
+    <option>Vitória</option>
+    <option>Serra</option>
+    <option>Outra</option>
+  </select>
+
+  @if(cidade.invalid && (cidade.dirty || cidade.touched) ){
+    <small>Selecione uma cidade</small>
+  }
+
+  <label class="checkbox">
+    <input type="checkbox" name="termos" [(ngModel)]="usuario.termos" required #termos="ngModel">
+    Aceito os termos e dou permissão para a utilização, verificação, consulta e exclusão de meus dados 
+    ,desde que avisado previamente , e dentro dos limites da A Lei Geral de Proteção de Dados (LGPD), nº 13.709/2018
+    <span>*</span>
+  </label>
+
+  @if(termos.invalid && (termos.dirty || termos.touched) ){
+    <small>Você deve aceitar os termos</small>
+  }
+
+<button type="submit"
+  [ngClass]="getButtonClass(form)">
+Cadastrar
+</button>
+</form>
+
+
+@if (mostrarModal) {
+  <div class="modal-backdrop">
+
+    <div class="modal-box"  (click)="$event.stopPropagation()">
+      <h2>✅ Cadastro realizado!</h2>
+      <p>Seus dados foram enviados com sucesso.</p>
+
+      <button type="button" (click)="fecharModal(form)">Fechar</button>
+    </div>
+
+  </div>
+}
+
+
+</section>
