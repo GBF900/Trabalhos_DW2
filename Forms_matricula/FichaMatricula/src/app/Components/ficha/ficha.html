@@ -64,8 +64,8 @@ placeholder="Insira sua senha">
   }
 
 
-<div class="campo-senha-denovo">
 <label for="password"> Confirmar senha  <span>*</span> </label>    
+<div class="campo-senha-denovo">
 <input  [type]="mostrarConfirmarSenha ? 'text' : 'password'" required minlength="6" 
 pattern="^[A-Za-z0-9]+$" [(ngModel)]="usuario.password2" 
 name="usuario.password2" #password2="ngModel"
