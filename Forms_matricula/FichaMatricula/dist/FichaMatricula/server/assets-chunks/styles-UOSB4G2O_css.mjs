@@ -1,0 +1,2 @@
+export default `*{box-sizing:border-box;margin:0}body{background-color:#edc04e}
+`;
