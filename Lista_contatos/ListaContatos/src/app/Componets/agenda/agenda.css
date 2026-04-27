@@ -1,0 +1,85 @@
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: Arial;
+}
+
+h1 {
+  text-align: center;
+  color: #2563eb;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.form input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.form button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:nth-child(1) {
+  background: #16a34a;
+  color: white;
+}
+
+button:nth-child(2) {
+  background: #dc2626;
+  color: white;
+}
+
+.erros small {
+  color: red;
+  margin-right: 20%;  
+
+}

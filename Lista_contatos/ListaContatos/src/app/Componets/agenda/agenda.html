@@ -1,0 +1,77 @@
+<div class="container" [formGroup]="form">
+
+  <h1>Agenda de Contatos</h1>
+
+  <!-- FORM -->
+  <div class="form">
+    <input formControlName="nome" placeholder="Nome">
+    <input formControlName="telefone" placeholder="Telefone">
+    <input formControlName="email" placeholder="E-mail">
+
+    <button (click)="inserir()">Inserir</button>
+  </div>
+
+  <!-- ERROS -->
+  <div class="erros">
+    @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
+      <small>Nome obrigatório</small>
+    }
+    @if (form.get('telefone')?.invalid && form.get('telefone')?.touched) {
+      <small>Telefone inválido</small>
+    }
+    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+      <small>Email inválido</small>
+    }
+  </div>
+
+  <!-- TABELA -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (contato of contatos.controls; track contato; let i = $index) {
+
+        <tr [formGroup]="getContato(i)">
+
+          <!-- MODO NORMAL -->
+          @if (editIndex !== i) {
+
+            <td>{{ contato.value.nome }}</td>
+            <td>{{ contato.value.telefone }}</td>
+            <td>{{ contato.value.email }}</td>
+
+            <td>
+              <button (click)="editar(i)">Editar</button>
+              <button (click)="excluir(i)">Excluir</button>
+            </td>
+
+          }
+
+          <!-- MODO EDIÇÃO -->
+          @else {
+
+            <td><input formControlName="nome"></td>
+            <td><input formControlName="telefone"></td>
+            <td><input formControlName="email"></td>
+
+            <td>
+              <button (click)="salvarEdicao(i)">Salvar</button>
+              <button (click)="cancelar()">Cancelar</button>
+            </td>
+
+          }
+
+        </tr>
+
+      }
+    </tbody>
+  </table>
+
+</div>
