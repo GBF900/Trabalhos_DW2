@@ -1,0 +1,198 @@
+
+<div class="form-container">
+
+<div [formGroup]="forms">
+
+ <h1> FICHA DE MATRÍCULA </h1>
+
+<label for="nome">Nome completo <span>*</span> </label>   
+
+<input type="text" id="nome" formControlName="nome">
+
+  <div class="erros">
+  @if (campoInvalido('nome')) {
+    <small>{{ getMensagemErro('nome') }}</small>
+  }
+</div>
+
+<label for="email">E-mail  <span>*</span> </label>    
+<input  type="text" formControlName="email" name="email"
+placeholder="Insira seu melhor E-mail">
+
+ <div class="erros">
+    @if (campoInvalido('email')) {
+    <small>{{ getMensagemErro('email') }}</small>
+  }
+</div> 
+
+
+<div class="form-group">
+  <label>Número(s) de Telefone <span>*</span></label>
+
+  <!-- Botão adicionar (fora do loop) -->
+  <button type="button" class="btn-add" (click)="addTel.emit()">
+    + Adicionar telefone
+  </button>
+
+  <div formArrayName="telefones">
+    @for (tel of telefones.controls; track tel; let i = $index) {
+
+      <div class="telefone-item">
+        <input [formControlName]="i"  (input)="formatarTelefone(i)" placeholder="Digite o telefone">
+
+        <button 
+          type="button" 
+          class="btn-remove" 
+          (click)="removeTel.emit(i)">
+          Remover
+        </button>
+      </div>
+
+    }
+  </div>
+
+  <!-- erro -->
+  @if (telefones.length === 0) {
+    <small>Adicione pelo menos um telefone</small>
+  }
+</div>
+
+  
+<label for="idade"> Idade <span>*</span> </label>    
+<input type="number" name="idade" formControlName="idade"
+ placeholder="Insira sua idade">
+
+ <div class="erros">
+    @if (campoInvalido('idade')) {
+    <small>{{ getMensagemErro('idade') }}</small>
+}
+</div>
+
+<div class="form-group">
+  <label for="senha">Senha <span>*</span></label>
+
+  <div class="campo-senha">
+    <input 
+      id="senha"
+      [type]="mostrarSenha ? 'text' : 'password'"
+      formControlName="senha"
+      placeholder="Insira sua senha"
+    >
+
+    <button 
+      type="button"
+      class="btn-olho"
+      (click)="toggleSenha()"
+      [attr.aria-label]="mostrarSenha ? 'Ocultar senha' : 'Mostrar senha'">
+
+      <i class="bi" 
+         [ngClass]="mostrarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'">
+      </i>
+
+    </button>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label for="confirmSenha">Confirmar senha <span>*</span></label>
+
+  <div class="campo-senha">
+    <input 
+      id="confirmSenha"
+      [type]="mostrarConfirmarSenha ? 'text' : 'password'"
+      formControlName="confirmsenha"
+      placeholder="Repita sua senha"
+    >
+
+    <button 
+      type="button"
+      class="btn-olho"
+      (click)="toggleConfirmarSenha()"
+      [attr.aria-label]="mostrarConfirmarSenha ? 'Ocultar senha' : 'Mostrar senha'">
+
+      <i class="bi" 
+         [ngClass]="mostrarConfirmarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'">
+      </i>
+
+    </button>
+  </div>
+</div>
+
+<!-- ERRO DE GRUPO -->
+@if (forms.errors?.['senhasDiferentes'] && forms.touched) {
+  <small class="erro">As senhas não coincidem</small>
+  <br><br>
+}
+
+<label>Gênero <span>*</span> </label>
+  <select name="genero"  formControlName="genero" >
+    <option value="">Selecione</option>
+    <option value="M">Masculino</option>
+    <option value="F">Feminino</option>
+    <option value="O">Outro</option>
+  </select>
+
+ <div class="erros">
+  @if (campoInvalido('genero')) {
+    <small>{{ getMensagemErro('genero') }}</small>
+  }
+</div>
+
+  <label>Cidade <span>*</span> </label>
+  <select name="cidade" formControlName="cidade" >
+    <option value="">Selecione</option>
+    <option>Colatina</option>
+    <option>Marilândia</option>
+    <option>Linhares</option>
+    <option>Vitória</option>
+    <option>Serra</option>
+    <option>Outra</option>
+  </select>
+
+  <div class="erros">
+  @if (campoInvalido('cidade')) {
+    <small>{{ getMensagemErro('cidade') }}</small>
+  }
+</div>
+
+  <label class="checkbox">
+    <input type="checkbox" name="termos" formControlName="termos" >
+    Aceito os termos e dou permissão para a utilização, verificação, consulta e exclusão de meus dados 
+    ,desde que avisado previamente , e dentro dos limites da A Lei Geral de Proteção de Dados (LGPD), nº 13.709/2018
+    <span>*</span>
+  </label>
+
+   <div class="erros">
+  @if (campoInvalido('termos')) {
+    <small>{{ getMensagemErro('termos') }}</small>
+  }
+</div>
+
+<button type="submit"
+  [ngClass]="getButtonClass()">
+  Cadastrar
+</button>
+
+@if (mostrarModal) {
+  <div class="modal-backdrop" (click)="fecharModal()">
+
+    <div class="modal-box" (click)="$event.stopPropagation()">
+      <h2>✅ Cadastro realizado!</h2>
+
+      <p><strong>Nome:</strong> {{ dadosResumo.nome }}</p>
+      <p><strong>Email:</strong> {{ dadosResumo.email }}</p>
+      <p><strong>Idade:</strong> {{ dadosResumo.idade }}</p>
+      <p><strong>Gênero:</strong> {{ dadosResumo.genero }}</p>
+      <p><strong>Cidade:</strong> {{ dadosResumo.cidade }}</p>
+
+      <button type="button" (click)="fecharModal()" id="btn-fech">Fechar</button>
+    </div>
+
+  </div>
+}
+
+
+</div>
+
+</div>

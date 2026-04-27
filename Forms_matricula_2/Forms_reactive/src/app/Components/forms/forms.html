@@ -1,0 +1,15 @@
+<app-cabecalho></app-cabecalho>
+
+<section>
+      
+<form [formGroup]="forms" (ngSubmit)="onSubmit()">
+
+<app-corpo  [forms]="forms"
+  [mostrarModal]="mostrarModal"
+  [dadosResumo]="dadosResumo"
+  (addTel)="adicionarTelefone()"
+  (submitForm)="onSubmit()"></app-corpo>
+
+</form>
+
+</section>

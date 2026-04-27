@@ -1,0 +1,19 @@
+*{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+nav{
+   width: 100%;
+   height: 100px;
+   background-color: rgb(112, 112, 112);
+   border-bottom: 8px solid rgb(11, 145, 223);
+   border-radius:7px ; 
+
+   color:white;
+   font-size: clamp(20px, 2.5vw, 50px);
+
+}
+
+
+
+
