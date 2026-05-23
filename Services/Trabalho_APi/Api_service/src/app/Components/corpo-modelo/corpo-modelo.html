@@ -1,0 +1,108 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="foto-area">
+      <button (click)="carregarUsuario()">
+        Gerar Usuário
+      </button>
+
+    </div>
+
+    <div class="formulario">
+
+      <div class="campo">
+        <label>Nome</label>
+        <input
+          type="text"
+          [value]="usuario().nome"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Sobrenome</label>
+        <input
+          type="text"
+          [value]="usuario().sobrenome"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Idade</label>
+        <input
+          type="text"
+          [value]="usuario().idade"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Usuário</label>
+        <input
+          type="text"
+          [value]="usuario().usuario"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Senha</label>
+        <input
+          type="text"
+          [value]="usuario().senha"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Email</label>
+        <input
+          type="text"
+          [value]="usuario().email"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Telefone</label>
+        <input
+          type="text"
+          [value]="usuario().telefone"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>País</label>
+        <input
+          type="text"
+          [value]="usuario().pais"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Nacionalidade</label>
+        <input
+          type="text"
+          [value]="usuario().nacionalidade"
+          readonly
+        >
+      </div>
+
+      <div class="campo">
+        <label>Gênero</label>
+        <input
+          type="text"
+          [value]="usuario().genero"
+          readonly
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

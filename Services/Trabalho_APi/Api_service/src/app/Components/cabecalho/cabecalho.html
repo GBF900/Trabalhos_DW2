@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a class="navbar-brand " id="Logo">GERARD.USU</a>
+   
+    <ul class="navbar-nav ">  
+
+      <li class="nav-item">
+          <a class="btn btn-outline-light  text-nowrap px-4 py-2"
+          routerLink="/apresentacao"
+          [class.disabled]="isRotaAtiva('/apresentacao')">
+          <i class="bi bi-house-door-fill me-2">  APRESENTAÇÃO</i></a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="btn btn-outline-light text-nowrap px-4 py-2"
+          [routerLink]="['/modelo']"
+          routerLinkActive="active"
+          [class.disabled]="isRotaAtiva('/modelo')"
+     >
+          <i class="bi bi-house-door-fill me-2"> GERADOR </i></a>
+        </li>
+
+      </ul>
+     </div>
