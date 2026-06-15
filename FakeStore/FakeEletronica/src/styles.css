@@ -1,0 +1,26 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+*{
+   box-sizing: border-box;
+   margin: 0 auto;
+   font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+body{
+   background-color: khaki;
+}
+
+
+button{
+
+border:none;
+
+border-radius:10px;
+
+padding:12px 18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}

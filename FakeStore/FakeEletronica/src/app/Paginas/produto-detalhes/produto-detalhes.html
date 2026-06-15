@@ -1,0 +1,50 @@
+
+@if(produto){
+
+<div class="details-container">
+
+    <div class="image-area">
+
+        <img  [src]="produto.image" [alt]="produto.title">
+
+    </div>
+
+    <div class="info-area">
+
+        <h1>
+            {{produto.title}}
+        </h1>
+
+        <span class="categoria">
+
+            {{produto.category}}
+
+        </span>
+
+        <p class="descricao">
+
+            {{produto.description}}
+
+        </p>
+
+        <h2>
+
+        {{produto.price * 5 | currency: 'BRL':'symbol':'1.2-2'}}
+
+        </h2>
+
+        <div class="rating">
+
+            ⭐ {{produto.rating.rate}}
+
+            ({{produto.rating.count}}
+            avaliações)
+
+        </div>
+
+        <button class="btn-success" (click)="adicionarAoCarrinho()"> Adicionar ao Carrinho</button>
+    </div>
+
+</div>
+
+}

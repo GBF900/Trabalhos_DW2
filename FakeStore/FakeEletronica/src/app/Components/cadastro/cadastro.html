@@ -1,0 +1,112 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+
+    <h1>Cadastro de Usuário</h1>
+
+    <div class="campo">
+        <label>Nome</label>
+        <input
+            type="text"
+            formControlName="firstname"
+            placeholder="Digite seu nome">
+
+        @if(cadastroForm.get('firstname')?.touched &&
+            cadastroForm.get('firstname')?.invalid){
+
+            <small class="erro">
+                Nome obrigatório
+            </small>
+        }
+    </div>
+
+    <div class="campo">
+        <label>Sobrenome</label>
+        <input
+            type="text"
+            formControlName="lastname"
+            placeholder="Digite seu sobrenome">
+
+        @if(cadastroForm.get('lastname')?.touched &&
+            cadastroForm.get('lastname')?.invalid){
+
+            <small class="erro">
+                Sobrenome obrigatório
+            </small>
+        }
+    </div>
+
+    <div class="campo">
+        <label>Usuário</label>
+        <input
+            type="text"
+            formControlName="username"
+            placeholder="Digite um usuário">
+
+        @if(cadastroForm.get('username')?.touched &&
+            cadastroForm.get('username')?.invalid){
+
+            <small class="erro">
+                Usuário obrigatório
+            </small>
+        }
+    </div>
+
+    <div class="campo">
+        <label>Email</label>
+        <input
+            type="email"
+            formControlName="email"
+            placeholder="Digite seu email">
+
+        @if(cadastroForm.get('email')?.touched &&
+            cadastroForm.get('email')?.invalid){
+
+            <small class="erro">
+                Email inválido
+            </small>
+        }
+    </div>
+
+    <div class="campo">
+        <label>Senha</label>
+        
+        <div class="senha-container">
+        <input
+            [type]="mostrarSenha ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Digite sua senha">
+   
+          <button type="button" class="btn-olho" (click)="toggleSenha()">
+
+         <i class="bi" [ngClass]="mostrarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'"></i>
+
+        </button>
+        </div>
+        @if(cadastroForm.get('password')?.touched &&
+            cadastroForm.get('password')?.invalid){
+
+            <small class="erro">
+                Mínimo de 6 caracteres
+            </small>
+        }
+    </div>
+
+    <div class="acoes">
+
+        <button
+            type="button"
+            class="btn-danger"
+            (click)="voltarLogin()">
+
+            Voltar
+        </button>
+
+        <button
+            type="submit"
+            class="btn-success">
+
+            Finalizar Cadastro
+        </button>
+
+    </div>
+
+</form>

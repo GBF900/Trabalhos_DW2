@@ -1,0 +1,130 @@
+section h1{
+    max-width: fit-content;
+     
+    margin-left: 38%;
+     
+    margin-top: 3%;
+    padding: 1%;
+    border:3px solid black;
+    border-radius: 10px;
+    background-color: blue;
+
+
+}
+
+
+.lista-produtos{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    background:white;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.1);
+
+}
+
+.item img{
+
+    width:120px;
+
+    height:120px;
+
+    object-fit:contain;
+
+}
+
+.dados{
+
+    flex:1;
+
+}
+
+.controle-qtd{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin:10px 0;
+
+}
+
+.acoes{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+.resumo{
+
+    margin-top:20%;
+
+    padding:25px;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.1);
+
+}
+
+button{
+    font-weight: 800;
+}
+
+.btn-success:hover {
+    border:none;
+    background: #00b04a;
+    transform: translateY(-2px);
+}
+
+/* Clique */
+.btn-success {
+    border: 2px inset rgb(42, 255, 42);
+    border-radius: 10px;
+    background-color: #00c150;
+    transform: scale(0.98);
+}
+
+
+.btn-danger:hover {
+    border:none;
+    background-color: red;
+    transform: translateY(-2px);
+}
+
+/* Clique */
+.btn-danger{
+    border-radius: 10px;
+    border:5px inset rgb(255, 55, 55);
+    background-color: red;
+    transform: scale(0.98);
+}

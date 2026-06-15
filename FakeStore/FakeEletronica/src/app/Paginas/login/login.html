@@ -1,0 +1,48 @@
+<form [formGroup]="loginForm" >
+
+<h1> Login </h1>
+
+<div class="campo">
+
+<label>Usuário</label>
+
+<input type="text" placeholder="Digite seu usuário"
+formControlName="username">
+
+@if(loginForm.get('username')?.touched && loginForm.get('username')?.invalid){
+
+<small class="erro"> Usuário obrigatório </small>
+
+}
+
+</div>
+
+<div class="campo">
+
+<label> Senha </label>
+
+<div class="senha-container">
+    <input
+      [type]="mostrarSenha ? 'text' : 'password'"
+      placeholder="Digite sua senha"
+      formControlName="password">
+
+    <button type="button" class="btn-olho" (click)="toggleSenha()">
+
+      <i class="bi" [ngClass]="mostrarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'"></i>
+
+    </button>
+
+</div>
+
+@if(loginForm.get('password')?.touched && loginForm.get('password')?.invalid){
+
+<small class="erro"> Senha inválida </small>
+}
+
+</div>
+<button class="btn-success" type="submit" (click)="Submit()"> Entrar</button>
+
+<button type="button" class="btn-cadastro" [routerLink]="['/cadastro']" > Cadastrar-se</button>
+</form>
+

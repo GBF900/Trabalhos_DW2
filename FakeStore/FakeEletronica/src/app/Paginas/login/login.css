@@ -1,0 +1,213 @@
+/* Container da página */
+
+:host {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: calc(100vh - 80px);
+
+    background: linear-gradient(
+        135deg,
+        #f4f6f9,
+        #e8eef7
+    );
+
+}
+
+/* Formulário */
+
+form {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    margin-left:35%;
+}
+
+/* Título */
+
+h1 {
+
+    text-align: center;
+
+    color: #121212;
+
+    margin-bottom: 10px;
+
+    font-size: 2rem;
+
+}
+
+/* Grupo dos campos */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+/* Labels */
+
+label {
+
+    font-weight: 600;
+
+    color: #333;
+
+}
+
+/* Inputs */
+
+input {
+
+    width: 100%;
+
+    padding: 12px 15px;
+
+    border: 2px solid #d9d9d9;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+    font-size: 1rem;
+
+}
+
+/* Foco */
+
+input:focus {
+
+    border-color: #00a8ff;
+
+    box-shadow:
+        0 0 10px rgba(0,168,255,.2);
+
+}
+
+.btn-cadastro{
+    background-color: rgb(119, 119, 119);
+    border: 3px solid black;
+    transition: 0.3s;
+}
+
+.btn-cadastro:hover{
+    border:none;
+    background-color: #333;
+     transform: translateY(-2px);
+}
+
+button{
+    border-radius: 10px;
+}
+
+/* Placeholder */
+
+input::placeholder {
+
+    color: #999;
+
+}
+
+/* Erros */
+
+.erro {
+
+    color: #ff3d57;
+
+    font-size: 0.85rem;
+
+    font-weight: 500;
+
+}
+
+/* Botão */
+
+.btn-success {
+    width: 100%;
+
+    padding: 14px;
+
+    border:2px inset green;
+    border-radius: 10px;
+    background: #00c853;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+/* Hover */
+
+.btn-success:hover {
+    border:none;
+    background: #00b04a;
+    transform: translateY(-2px);
+}
+
+/* Clique */
+.btn-success:active {
+    transform: scale(0.98);
+}
+
+.senha-container{
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.senha-container input{
+    width: 100%;
+    padding-right: 50px;
+}
+
+.btn-olho{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+}
+
+.btn-olho i{
+    font-size: 20px;
+    color:black;
+    transition: .2s;
+}
+
+.btn-olho:hover i{
+    color: #00a8ff;
+}

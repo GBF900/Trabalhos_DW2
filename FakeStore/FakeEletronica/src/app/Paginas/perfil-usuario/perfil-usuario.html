@@ -1,0 +1,151 @@
+<form [formGroup]="usuarioForm" (ngSubmit)="salvar()">
+
+<h1> MEUS DADOS </h1>
+
+<div class="campo">
+
+<label> NOME </label>
+
+<input formControlName="primeiroNome">
+
+</div>
+
+<div class="campo">
+
+<label> SOBRENOME </label>
+
+<input formControlName="ultimoNome">
+
+</div>
+
+<div class="campo">
+
+<label> EMAIL </label>
+
+<input formControlName="email">
+
+<div class="erro">
+</div>
+
+@if(usuarioForm.get('email')?.errors?.['required']){
+
+  <small class="erro">
+    Email obrigatório
+  </small>
+
+}
+
+@if(usuarioForm.get('email')?.errors?.['pattern']){
+
+  <small class="erro">
+   Email invalido. Exemplo: fulano@gmail.com
+  </small>
+
+}
+</div>
+
+
+<div class="campo" >
+
+<label> TELEFONE </label>
+
+<input placeholder="() XXXX-XXXX"  formControlName="telefone">
+
+<div class="erro">
+
+@if(usuarioForm.get('telefone')?.errors?.['required']){
+
+  <small class="erro">
+   Telefone Obrigatorio
+  </small>
+
+}
+
+@if(usuarioForm.get('telefone')?.errors?.['pattern']){
+
+  <small class="erro">
+  Formato errado de Telefone. Exemplo: (00) 0000-0000
+  </small>
+
+}
+</div>
+
+</div>
+
+<div class="campo" >
+<label> USUARIO </label>
+
+<input formControlName="usuario">
+
+</div>
+
+<div class="campo" >
+<label> SENHA </label>
+
+<input formControlName="senha">
+
+</div>
+
+
+<div class="campo" >
+
+<label> CEP </label>
+
+<input placeholder="XXXXX-XXX"   formControlName="cep">
+
+<div class="erro">
+</div>
+
+@if(usuarioForm.get('cep')?.errors?.['required']){
+
+  <small class="erro">
+    CEP obrigatório
+  </small>
+
+}
+
+@if(usuarioForm.get('cep')?.errors?.['pattern']){
+
+  <small class="erro">
+    CEP inválido. Exemplo: 29100-000
+  </small>
+
+}
+</div>
+
+<div class="campo" >
+
+<label> RUA </label>
+
+<input formControlName="rua">
+
+</div>
+
+<div class="campo" >
+
+<label> N° DA RESIDENCIA </label>
+
+<input formControlName="numero" id="numeroCasa">
+
+</div>
+
+<div class="campo" >
+
+<label> CIDADE </label>
+
+<input formControlName="cidade">
+
+</div>
+
+
+
+<div class="acoes">
+
+<button class="btn-sucesso" (click)="salvar()"> Salvar Alterações </button>
+
+<button class="btn-danger" (click)="limpar()"> Limpar Tudo </button>
+
+</div>
+
+
+</form>

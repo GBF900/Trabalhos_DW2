@@ -1,0 +1,47 @@
+<section>
+<h1> Meu Carrinho </h1>
+
+<section>
+
+    <div class="lista-produtos">
+
+    @for(item of itens; track item.produto.id){
+    <div class="item">
+        <img [src]="item.produto.image">
+
+        <div class="dados">
+
+            <h3> {{item.produto.title}} </h3>
+
+            <p>{{item.produto.price * 5 | currency:'BRL'}}</p>
+
+            <div class="controle-qtd">
+
+                <button class="btn-danger" (click)="diminuirProdutosCarrinho(item.produto.id)">-</button>
+                <span>{{item.quantidade}} </span>
+                <button class="btn-success" (click)="aumentarProdutosCarrinho(item.produto.id)">+</button>
+
+            </div>
+
+            <p> Subtotal: {{item.produto.price * 5 *  item.quantidade| currency:'BRL'}}</p>
+        </div>
+        <button class="btn-danger" (click)="remover(item.produto.id)">Remover</button>
+
+    </div>
+
+    }
+
+</div>
+
+<div class="resumo">
+    <h2> Total: {{valorTotal | currency:'BRL'}}</h2>
+
+    <div class="acoes">
+
+        <button class="btn-danger" (click)="excluirTodosProdutosCarrinho()">Esvaziar Carrinho</button>
+
+        <button class="btn-success" (click)="finalizarPedido()">  Finalizar Pedido        </button>
+    
+    </div>
+
+</div>

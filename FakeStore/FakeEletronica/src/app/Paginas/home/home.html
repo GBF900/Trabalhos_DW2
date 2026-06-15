@@ -1,0 +1,29 @@
+
+@if(usuario){    
+<section class="banner">
+
+    <h1>Casa dos Produtos</h1>
+    <p>Os melhores produtos do mercado</p>
+    <h5>Seja bem-vindo(a) novamente, {{usuario.name.firstname.toUpperCase()}}</h5>
+
+</section>
+
+}
+
+@if(carregando){
+
+    <app-carregando></app-carregando>
+}
+
+
+@else{
+
+    <section class="products-grid">
+
+        @for(produto of produtos; track produto.id){
+            <app-card-produto [produto]="produto"></app-card-produto>
+        }
+
+    </section>
+
+}

@@ -1,0 +1,26 @@
+<header>
+
+<div class="logo"> Casa dos Produtos</div>
+
+@if(!estaNaTelaLogin() || !estaNaTelaCadastro()){
+<nav>
+
+<a [routerLink]="['/home']"
+   routerLinkActive="active"
+   [class.disabled]="isRotaAtiva('/home')">Home</a>
+
+<a [routerLink]="['/meusProdutos']"
+   routerLinkActive="active"
+   [class.disabled]="isRotaAtiva('/meusProdutos')">Carrinho ({{quantidadeItensCarrinho}})</a>
+
+<a [routerLink]="['/perfil']"
+   routerLinkActive="active"
+   [class.disabled]="isRotaAtiva('/perfil')">Minha Conta</a>
+
+<button class="btn-danger"(click)="logout()">Sair</button>
+
+
+</nav>
+}
+
+</header>
