@@ -1,0 +1,16 @@
+export default `<!doctype html>
+<html lang="pt-br" data-beasties-container="">
+<head>
+  <meta charset="utf-8">
+  <title>FakeEletronica</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ <style>*{box-sizing:border-box;margin:0 auto;font-family:Verdana,Geneva,Tahoma,sans-serif}body{background-color:khaki}</style><link rel="stylesheet" href="styles-WH2A76WB.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-WH2A76WB.css"></noscript></head> 
+<body ngcm="">
+  <app-root></app-root>
+
+<script src="main-EXWMBSNV.js" type="module"></script></body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</html>
+`;
