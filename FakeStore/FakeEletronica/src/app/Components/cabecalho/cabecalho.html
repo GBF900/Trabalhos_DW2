@@ -2,7 +2,7 @@
 
 <div class="logo"> Casa dos Produtos</div>
 
-@if(!estaNaTelaLogin() || !estaNaTelaCadastro()){
+@if(!estaNaTelaLogin() && !estaNaTelaCadastro()){
 <nav>
 
 <a [routerLink]="['/home']"
