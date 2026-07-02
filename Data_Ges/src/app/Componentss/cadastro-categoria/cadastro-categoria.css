@@ -1,0 +1,33 @@
+.card{
+
+    border:none;
+
+    border-radius:15px;
+
+}
+
+.card-header{
+
+    background:white;
+
+}
+
+.form-control{
+
+    height:45px;
+
+}
+
+label{
+
+    font-weight:600;
+
+    margin-bottom:5px;
+
+}
+
+button{
+
+    min-width:120px;
+
+}

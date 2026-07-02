@@ -1,0 +1,76 @@
+
+<aside
+    class="sidebar"
+    [class.fechado]="!aberto">
+
+    <div class="logo">
+
+        <i class="bi bi-shop"></i>
+
+        @if(aberto){
+
+            <span>
+
+                Fake Data
+
+            </span>
+
+        }
+
+    </div>
+
+    <hr>
+
+    <ul class="menu">
+
+        <li>
+
+            <a
+
+                routerLink="/produtos"
+
+                routerLinkActive="ativo">
+
+                <i class="bi bi-box-seam"></i>
+
+                @if(aberto){
+
+                    <span>
+
+                        Produtos
+
+                    </span>
+
+                }
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a
+
+                routerLink="/categorias"
+
+                routerLinkActive="ativo">
+
+                <i class="bi bi-tags"></i>
+
+                @if(aberto){
+
+                    <span>
+
+                        Categorias
+
+                    </span>
+
+                }
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</aside>

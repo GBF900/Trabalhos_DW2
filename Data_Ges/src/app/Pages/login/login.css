@@ -1,0 +1,78 @@
+.tela-login{
+
+    background:linear-gradient(
+        135deg,
+        #0d6efd,
+        #4f8dfd
+    );
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:18px;
+
+}
+
+.card-body{
+
+    padding:40px;
+
+}
+
+.form-control{
+
+    height:48px;
+
+}
+
+.form-control:focus{
+
+    box-shadow:none;
+
+    border-color:#0d6efd;
+
+}
+
+.btn{
+
+    height:48px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+.bi-bag-fill{
+
+    font-size:70px;
+
+}
+
+.alert{
+
+    margin-bottom:25px;
+
+}
+
+.campo-senha button {
+    position: absolute;
+    min-width: 10%;
+    height: 40px;
+
+    top:68%;
+    left:75%;
+
+
+    background-color: transparent;
+    border:none;
+}
+
+i{
+    color: black;
+    font-size: 22px;
+
+}

@@ -1,0 +1,130 @@
+.sidebar{
+
+    position:absolute;
+
+    top:70px;
+
+    left:0;
+
+    width:250px;
+
+    min-height:5735px;
+
+    background:#212529;
+
+    color:white;
+
+    transition:.3s;
+
+    overflow:hidden;
+
+    z-index:999;
+
+}
+
+.sidebar.fechado{
+
+    width:75px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.logo i{
+
+    font-size:28px;
+
+}
+
+.menu{
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.menu li{
+
+    width:100%;
+
+}
+
+.menu a{
+
+    display:flex;
+    cursor: pointer;
+
+    align-items:center;
+
+    gap:18px;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:18px 20px;
+
+    transition:.2s;
+
+}
+
+.menu a:hover{
+
+    background:#343a40;
+
+}
+
+.menu a.ativo{
+
+    background:#0d6efd;
+
+}
+
+.menu i{
+
+    font-size:22px;
+
+    min-width:25px;
+
+}
+
+hr{
+
+    color:white;
+
+    margin:0;
+
+}
+
+@media(max-width:768px){
+
+.sidebar{
+
+    width:75px;
+
+}
+
+.sidebar span{
+
+    display:none;
+
+}
+
+}

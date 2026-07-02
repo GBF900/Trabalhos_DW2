@@ -1,0 +1,9 @@
+<app-cabecalho (menuToggle)="alternarMenu()"></app-cabecalho>
+
+<app-barra-lateral [aberto]="menuAberto"></app-barra-lateral>
+
+<div class="conteudo" [class.sidebar-fechada]="!menuAberto">
+
+  <router-outlet></router-outlet>
+
+</div>

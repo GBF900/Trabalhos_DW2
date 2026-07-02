@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+    <div class="card shadow">
+
+        <div class="card-header">
+
+            <h3>
+
+                {{ modoEdicao ? 'Editar Categoria' : 'Nova Categoria' }}
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form [formGroup]="formulario" (ngSubmit)="salvar()">
+
+                <div class="mb-3">
+
+                    <label>
+                        Nome
+                    </label>
+
+                    <input class="form-control" formControlName="name">
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label>
+                        URL da Imagem
+                    </label>
+
+                    <input class="form-control" formControlName="image">
+
+                </div>
+
+                <button class="btn btn-success me-2">
+
+                    Salvar
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    (click)="cancelar()">
+
+                    Cancelar
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

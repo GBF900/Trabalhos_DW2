@@ -1,0 +1,43 @@
+.navbar{
+
+    height:70px;
+
+}
+
+.navbar-brand{
+
+    font-size:22px;
+
+}
+
+.nav-link{
+
+    font-size:17px;
+
+    transition:.2s;
+
+}
+
+.nav-link:hover{
+
+    color:#ffe082 !important;
+
+}
+
+.btn{
+
+    min-width:110px;
+
+}
+
+.bi-list{
+
+    font-size:24px;
+
+}
+
+.bi-bag-fill{
+
+    margin-right:8px;
+
+}
