@@ -12,30 +12,65 @@ import { LayoutPrivado } from './Layouts/layout-privado/layout-privado';
 
 export const routes: Routes = [
  
-  // =====================
-  // PUBLICO
-  // =====================
-  {
+   {
     path: '',
     component: LayoutPublico,
     children: [
-      { path: 'login', component: Login },
-      { path: '', redirectTo: 'login', pathMatch: 'full' }
+
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      },
+
+      {
+        path: 'login',
+        component: Login,
+      }
+
     ]
   },
 
-  // =====================
-  // PRIVADO
-  // =====================
   {
     path: '',
     component: LayoutPrivado,
     canActivate: [authGuardGuard],
     children: [
-      { path: 'categorias', component: Categorias },
-      { path: 'produtos', component: Produtos },
-      // opcional (boa prática)
-      { path: '', redirectTo: 'produtos', pathMatch: 'full' }
+
+      {
+        path: 'produtos',
+        component: Produtos
+      },
+
+      {
+        path: 'produtos/novo',
+        component: CadastroProduto,
+        canDeactivate: [CanDeactivateGuard]
+      },
+
+      {
+        path: 'produtos/:id',
+        component: CadastroProduto,
+        canDeactivate: [CanDeactivateGuard]
+      },
+
+      {
+        path: 'categorias',
+        component: Categorias
+      },
+
+      {
+        path: 'categorias/nova',
+        component: CadastroCategoria,
+        canDeactivate: [CanDeactivateGuard]
+      },
+
+      {
+        path: 'categorias/:id',
+        component: CadastroCategoria,
+        canDeactivate: [CanDeactivateGuard]
+      }
+
     ]
   },
 
