@@ -1,0 +1,146 @@
+<section>
+
+    <h1> FICHA DE MATRÍCULA </h1>
+
+<form [formGroup]="formsMat" (ngSubmit)="onSubmit()">
+
+<label for="nome">Nome completo <span>*</span> </label>    
+<input type="text"  pattern="[A-Za-zÀ-ÿá-ÿ\u00C0-\u00FF\s-]+$" 
+formControlName="nome" name="nome" 
+placeholder="Insira seu nome completo">
+
+ @if (formsMat.get('nome')!.invalid && (formsMat.get('nome')!.dirty || formsMat.get('nome')!.touched)) {
+    <small >Nome obrigatório</small>
+    @if (formsMat.get('nome')!.errors?.['minlength']) {
+      <small>Mínimo de 3 caracteres</small>
+    }
+  }
+
+
+<label for="idade"> Idade <span>*</span> </label>    
+<input type="number" name="idade" formControlName="idade"
+ placeholder="Insira sua idade">
+
+  @if (formsMat.get('idade')!.invalid && (formsMat.get('idade')!.dirty || formsMat.get('idade')!.touched)) {
+      <small>Idade obrigatória</small>
+    @if (formsMat.get('idade')!.errors?.['min']) {
+      <small>A idade mínima é 18 anos</small>
+    }
+  }
+
+<label for="email">E-mail  <span>*</span> </label>    
+<input  type="text" 
+formControlName="email" name="email" 
+placeholder="Insira seu melhor E-mail">
+
+@if (formsMat.get('email')!.invalid && (formsMat.get('email')!.dirty || formsMat.get('email')!.touched)) {
+  <small>O e-mail é obrigatório</small>
+  
+  @if (formsMat.get('email')!.errors?.['email']) {
+  <small>E-mail inválido</small>
+  } 
+  @else if (formsMat.get('email')!.errors?.['pattern']) {
+    <small>Formato fora do padrão exigido</small>
+
+  }
+}
+
+<label for="password">Senha  <span>*</span> </label>    
+<div class="campo-senha">
+<input  [type] ="mostrarSenha ? 'text' : 'password'" required minlength="6"
+pattern="^[A-Za-z0-9]+$" formControlName="senha" 
+placeholder="Insira sua senha"> 
+
+<button type="button"  class="bi" [ngClass]="mostrarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'" (click)="toggleSenha()">
+  </button>
+</div>
+ @if (formsMat.get('senha')!.invalid && (formsMat.get('senha')!.dirty || formsMat.get('senha')!.touched)) {
+  <small>Mínimo de 6 caracteres</small>
+   @if (formsMat.get('senha')!.errors?.['pattern']) {
+   <small>   Senha não atende ao padrão exigido</small>
+   <small>Não aceitamos caracteres escpeciais. Apenas letras , maiúsculas e minúsculas, e números</small>
+  } 
+  }
+
+
+<label for="password"> Confirmar senha  <span>*</span> </label>    
+<div class="campo-senha-denovo">
+<input  [type]="mostrarConfirmarSenha ? 'text' : 'password'" required minlength="6" 
+pattern="^[A-Za-z0-9]+$" formControlName="password2" 
+placeholder="Insira sua senha novamente"> 
+ 
+<button type="button" class="bi" [ngClass]="mostrarConfirmarSenha ? 'bi-eye-fill' : 'bi-eye-slash-fill'" (click)="toggleConfirmarSenha()">
+  </button>
+</div>
+@if ((formsMat.get('password2')!.dirty || formsMat.get('password2')!.touched) && 
+    formsMat.get('password2')!.value ==='' && formsMat.get('senha')!.value === ''){ 
+ 
+      <small>Insira uma senha no campo "Senha" e repita-a no campo "Confirmar senha"</small>  
+  
+      @if ( formsMat.get('password2')!.value != formsMat.get('senha')!.value ) {
+    <small>As senhas não coincidem</small> 
+  }
+  }
+@else if (formsMat.get('password2')!.value === formsMat.get('senha')!.value && 
+          formsMat.get('password2')!.value!.length>0 && formsMat.get('senha')!.value!.length>0){
+  <small class="sucesso">Senhas combinam</small>
+}
+
+<label>Gênero <span>*</span> </label>
+  <select name="genero" formControlName="genero" >
+    <option value="">Selecione</option>
+    <option value="M">Masculino</option>
+    <option value="F">Feminino</option>
+    <option value="O">Outro</option>
+  </select>
+
+  @if(formsMat.get('genero')!.invalid && (formsMat.get('genero')!.dirty || formsMat.get('genero')!.touched) ){
+    <small>Selecione um gênero</small>
+  }
+
+  <label>Cidade <span>*</span> </label>
+  <select name="cidade" formControlName="cidade" >
+    <option value="">Selecione</option>
+    <option>Colatina</option>
+    <option>Marilândia</option>
+    <option>Linhares</option>
+    <option>Vitória</option>
+    <option>Serra</option>
+    <option>Outra</option>
+  </select>
+
+  @if(formsMat.get('cidade')!.invalid && (formsMat.get('cidade')!.dirty || formsMat.get('cidade')!.touched) ){
+    <small>Selecione uma cidade</small>
+  }
+
+  <label class="checkbox">
+    <input type="checkbox" name="termos" formControlName="termos" (click)="formsMat.get('termos')!.setValue(true)" >
+    Aceito os termos e dou permissão para a utilização, verificação, consulta e exclusão de meus dados 
+    ,desde que avisado previamente , e dentro dos limites da A Lei Geral de Proteção de Dados (LGPD), nº 13.709/2018
+    <span>*</span>
+  </label>
+
+  @if(formsMat.get('termos')!.invalid && (formsMat.get('termos')!.dirty || formsMat.get('termos')!.touched) ){
+    <small>Você deve aceitar os termos</small>
+  }
+
+<button type="submit"
+  [ngClass]="getButtonClass()" >
+Cadastrar
+</button>
+</form>
+
+
+@if(mostrarModal){
+  <div class="modal-backdrop" (click)="fecharModal()">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+      <h2>✅ Cadastro realizado!</h2>
+      <p>Seus dados foram enviados com sucesso.</p>
+
+      <button type="button" (click)="fecharModal()">Fechar</button>
+    </div>
+
+  </div>
+}
+
+</section>

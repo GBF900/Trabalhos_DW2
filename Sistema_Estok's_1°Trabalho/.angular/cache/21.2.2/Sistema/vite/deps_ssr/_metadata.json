@@ -1,0 +1,73 @@
+{
+  "hash": "9ed0f48d",
+  "configHash": "caca9158",
+  "lockfileHash": "2705e36b",
+  "browserHash": "f99dfdc7",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "3fc2b496",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "86e19c87",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "728b7bc2",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "8c9772b3",
+      "needsInterop": false
+    },
+    "@angular/ssr": {
+      "src": "../../../../../../node_modules/@angular/ssr/fesm2022/ssr.mjs",
+      "file": "@angular_ssr.js",
+      "fileHash": "f004bebf",
+      "needsInterop": false
+    },
+    "@angular/ssr/node": {
+      "src": "../../../../../../node_modules/@angular/ssr/fesm2022/node.mjs",
+      "file": "@angular_ssr_node.js",
+      "fileHash": "c17ecda7",
+      "needsInterop": false
+    },
+    "express": {
+      "src": "../../../../../../node_modules/express/index.js",
+      "file": "express.js",
+      "fileHash": "58d0e84e",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-ULIRM3EC": {
+      "file": "chunk-ULIRM3EC.js"
+    },
+    "chunk-AEA4UELX": {
+      "file": "chunk-AEA4UELX.js"
+    },
+    "chunk-2UX4MKZ4": {
+      "file": "chunk-2UX4MKZ4.js"
+    },
+    "chunk-ZAKNM4GD": {
+      "file": "chunk-ZAKNM4GD.js"
+    },
+    "chunk-AYCNTLRR": {
+      "file": "chunk-AYCNTLRR.js"
+    },
+    "xhr2-E5RTESSH": {
+      "file": "xhr2-E5RTESSH.js"
+    },
+    "chunk-6DU2HRTW": {
+      "file": "chunk-6DU2HRTW.js"
+    }
+  }
+}
