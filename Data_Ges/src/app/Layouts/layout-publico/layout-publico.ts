@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Cabecalho } from '../../Componentss/cabecalho/cabecalho';
-import { BarraLateral } from '../../Componentss/barra-lateral/barra-lateral';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

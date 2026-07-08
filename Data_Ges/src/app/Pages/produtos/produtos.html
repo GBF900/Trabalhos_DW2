@@ -136,6 +136,12 @@
 
             <hr>
 
+        @if(erro){
+            <div class="alert alert-danger">
+                {{erro}}
+            </div>
+        }
+
         @if(carregando){
         
             <div class="text-center p-5">
@@ -166,7 +172,7 @@
 
                 <tbody>
 
-            @for(produto of produtos; track $index){        
+            @for(produto of produtos; track produto.id){        
                 <tr>
                     <td>
                         {{produto.id}}
@@ -175,7 +181,7 @@
 
                     <td>
 
-                    <img [src]="produto.images[0]"   class="foto">
+                    <img [src]="produto.images[0]" loading="lazy" class="foto">
 
                     </td>
                     <td>
@@ -221,6 +227,19 @@
                 </tbody>
 
             </table>
+
+            @if(temMaisProdutos){
+                <div class="text-center">
+                    <button
+                        class="btn btn-outline-primary"
+                        [disabled]="carregandoMais"
+                        (click)="carregarMais()">
+
+                        {{ carregandoMais ? 'Carregando...' : 'Carregar mais' }}
+
+                    </button>
+                </div>
+            }
         }
         </div>
 

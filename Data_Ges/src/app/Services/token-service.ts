@@ -1,21 +1,36 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
   private KEY = 'token';
+  private storage: Storage | null = null;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.storage = localStorage;
+    }
+  }
+
+
 
   salvar(token: string) {
-    localStorage.setItem(this.KEY, token);
+    this.storage?.setItem(this.KEY, token);
   }
 
   obter(): string | null {
-    return localStorage.getItem(this.KEY);
+    return this.storage?.getItem(this.KEY) ?? null;
   }
 
-  logOut(): void {
-    localStorage.removeItem(this.KEY);
+  logOut(): boolean {
+    if (this.storage) {
+      this.storage.removeItem(this.KEY);
+      return true;
+    }
+
+    return false;
   }
 
   estaLogado(): boolean {

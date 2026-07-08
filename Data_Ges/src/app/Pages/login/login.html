@@ -52,15 +52,15 @@
 
                             <input
                                 class="form-control"
-                                [type]="mostrarSenha ? 'password': 'text' "
+                                [type]="mostrarSenha ? 'text': 'password' "
                                 formControlName="password"
                                 >
-                            <button (click)="mostrarSenhaClick()"><i [ngClass]="mostrarSenha ? 'bi bi-eye-slash' : 'bi bi-eye' "></i></button>
+                            <button type="button" (click)="mostrarSenhaClick()"><i [ngClass]="mostrarSenha ? 'bi bi-eye-slash' : 'bi bi-eye' "></i></button>
                         </div>
 
                         <button
                             class="btn btn-primary w-100"
-                            [disabled]="formulario.invalid">
+                            [disabled]="formulario.invalid || carregando">
 
                             Entrar
 

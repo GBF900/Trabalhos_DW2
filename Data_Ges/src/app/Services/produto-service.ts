@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Produto } from '../Models/produto';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,12 @@ export class ProdutoService {
 
 constructor(private http:HttpClient){}
 
-  listar():Observable<Produto[]>{
-  return this.http.get<Produto[]>(this.#api);
+  listar(limit = 20, offset = 0): Observable<Produto[]> {
+    const params = new HttpParams()
+      .set('limit', limit)
+      .set('offset', offset);
+
+    return this.http.get<Produto[]>(this.#api, { params });
 
 }
 
@@ -20,24 +24,33 @@ constructor(private http:HttpClient){}
   return this.http.get<Produto>(`${this.#api}/${id}`);
 }
 
-filtrar(titulo?: string, categoria?: string, precoMin?: number,precoMax?: number){
+filtrar(
+  titulo?: string,
+  categoria?: string,
+  precoMin?: number,
+  precoMax?: number,
+  limit = 20,
+  offset = 0
+): Observable<Produto[]> {
 
-  let params: any = {};
+  let params = new HttpParams()
+    .set('limit', limit)
+    .set('offset', offset);
 
   if(titulo){
-    params.title = titulo;
+    params = params.set('title', titulo);
   }
 
   if(categoria){
-    params.categoryId = categoria;
+    params = params.set('categoryId', categoria);
   }
 
   if(precoMin != null){
-    params.price_min = precoMin;
+    params = params.set('price_min', precoMin);
   }
 
   if(precoMax != null){
-    params.price_max = precoMax;
+    params = params.set('price_max', precoMax);
   }
 
   return this.http.get<Produto[]>(this.#api,{ params });

@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { Produto } from '../../Models/produto';
 import { Categoria } from '../../Models/categoria';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProdutoService } from '../../Services/produto-service';
 import { CategoriaService } from '../../Services/categoria-service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-produtos',
-  imports: [CurrencyPipe, FormsModule],
+  imports: [CommonModule, CurrencyPipe, FormsModule, RouterLink],
   templateUrl: './produtos.html',
   styleUrl: './produtos.css',
 })
@@ -17,8 +18,13 @@ export class Produtos {
   produtos: Produto[] = [];
   categorias: Categoria[] = [];
   carregando = false;
+  carregandoMais = false;
+  erro = '';
   textoPesquisa = '';
   categoriaSelecionada = '';
+  limite = 20;
+  offset = 0;
+  temMaisProdutos = false;
 
   precoMinimo!: number;
   precoMaximo!: number;
@@ -48,20 +54,49 @@ export class Produtos {
   }
 
   buscarProdutos(): void{
+    this.offset = 0;
+    this.carregarProdutos();
+  }
 
-    this.carregando = true;
+  carregarMais(): void {
+    if (this.carregandoMais || !this.temMaisProdutos) {
+      return;
+    }
 
-    this.produtosService.filtrar( this.textoPesquisa, this.categoriaSelecionada,this.precoMinimo,this.precoMaximo
+    this.offset += this.limite;
+    this.carregarProdutos(true);
+  }
+
+  private carregarProdutos(acumular = false): void {
+    this.erro = '';
+
+    if (acumular) {
+      this.carregandoMais = true;
+    } else {
+      this.carregando = true;
+    }
+
+    this.produtosService.filtrar(
+      this.textoPesquisa,
+      this.categoriaSelecionada,
+      this.precoMinimo,
+      this.precoMaximo,
+      this.limite,
+      this.offset
+    ).pipe(
+      finalize(() => {
+        this.carregando = false;
+        this.carregandoMais = false;
+      })
     ).subscribe({
     next: (resposta: Produto[]) =>{
-        this.produtos = resposta;
+        this.temMaisProdutos = resposta.length === this.limite;
+        this.produtos = acumular ? [...this.produtos, ...resposta] : resposta;
 
       },
 
-    complete: ()=>{
-
-        this.carregando = false;
-
+    error: () => {
+        this.erro = 'Nao foi possivel carregar os produtos agora.';
       }
 
     });

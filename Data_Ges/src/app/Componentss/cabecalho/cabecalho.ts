@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TokenService } from '../../Services/token-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-cabecalho',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './cabecalho.html',
   styleUrl: './cabecalho.css',
 })

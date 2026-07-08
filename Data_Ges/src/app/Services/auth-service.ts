@@ -15,10 +15,8 @@ login(email:string,password:string):Observable<any>{
 
 }
 
-  perfil(){
-
+perfil(){
   return this.http.get(`${this.api}/auth/profile`);
-
   }
 
 }
